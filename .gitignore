@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Meeting Intelligence Tracker: extracted JSON from transcripts
+output/
