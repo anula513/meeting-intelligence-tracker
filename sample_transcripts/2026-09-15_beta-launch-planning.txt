@@ -1,0 +1,26 @@
+[00:00:04] Priya: Okay, let's get started. Three things today: the beta launch date, dark mode, and pricing for the beta.
+[00:00:15] Marcus: Before we start, staging is still a bit flaky. Just flagging it.
+[00:00:22] Priya: Noted. Let's start with the launch date. I'd like to aim for October 1st.
+[00:00:31] Dana: I'm fine with that, but the security review isn't done yet. If it finds anything serious, October 1st won't work.
+[00:00:44] Priya: Fair. Let's go with October 1st, assuming security signs off. I'll own the launch date.
+[00:00:52] Marcus: Works for me.
+[00:01:03] Dana: I'll run the pen test next week so we know in time.
+[00:01:10] Priya: Great. Marcus, can you get the staging environment stable by the 25th?
+[00:01:16] Marcus: Yes, I can do that.
+[00:01:25] Priya: Next, dark mode. Leo, where are we?
+[00:01:29] Leo: Honestly, it's about half done. The colors in the charts still look wrong
+and I don't think we can fix that properly before the beta.
+[00:01:41] Marcus: Then I'd cut it. It's not worth delaying for.
+[00:01:47] Priya: Agreed. We're dropping dark mode from the beta. It can come back after launch.
+[00:01:55] Leo: That's fine by me.
+[00:02:04] Priya: Related to that, we also agreed to switch to the new onboarding flow instead of the old one. Leo, this one's yours.
+[00:02:12] Leo: Sure, I'll take it.
+[00:02:20] Marcus: We should probably look into caching at some point too. The dashboard is slow.
+[00:02:27] Priya: Maybe, let's not get into that today.
+[00:02:35] Priya: Last thing, pricing. Should the beta be free or paid?
+[00:02:41] Marcus: Free. We want as many testers as possible.
+[00:02:47] Dana: I'd rather charge something small. Free users don't give us serious feedback.
+[00:02:58] Leo: I could go either way.
+[00:03:05] Priya: Okay, we're not going to settle this today. Let's come back to pricing next week.
+[00:03:14] Dana: One more thing. Someone needs to send the security checklist to the vendor by Friday.
+[00:03:21] Priya: Yeah. Okay, I think that's everything. Thanks, all.

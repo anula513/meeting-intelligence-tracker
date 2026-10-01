@@ -1,0 +1,21 @@
+Thanks everyone for joining. The main goal today is to pick an analytics vendor for the beta. We looked at Vendor A and Vendor B over the last two weeks.
+
+Note: the budget figures below are estimates from last quarter.
+
+Vendor A is cheaper, around 400 dollars a month, but their dashboard export was really limited when we tested it. Vendor B is about 650 a month and did everything we needed.
+
+I think the export problem is a dealbreaker. We'd end up building our own export tool, which costs more than the difference.
+
+Agreed. So we're going with Vendor B. Everyone okay with that? Good, that's decided.
+
+On the contract length, they offered a discount for a one-year contract. We'll sign the one-year contract if legal approves the data retention terms. If legal pushes back, we go month to month.
+
+Priya will draft a short summary of the contract terms for legal by Wednesday.
+
+There's also the question of moving our old analytics data over. Some of us think it's worth it, some don't. It could take a couple of weeks. We didn't reach a conclusion on that one, so let's leave it open for now.
+
+Someone should ask finance about the invoice schedule before we sign anything.
+
+It would be nice to get a demo of their new alerting feature at some point.
+
+Okay, that's all for today. Thanks.
