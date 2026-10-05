@@ -14,3 +14,28 @@ def parse_labeled(text):
         elif turns:
             turns[-1]["text"] += " " + line
     return turns
+
+def parse_unlabeled(text):
+    paragraphs = []
+    current = []  # the lines of the paragraph we're building right now
+
+    for line in text.splitlines():
+        line = line.strip()
+        if line:
+            current.append(line)
+        elif current:
+            paragraphs.append({
+                "paragraph": len(paragraphs) + 1,
+                "speaker": None,
+                "text": " ".join(current),
+            })
+            current = []
+
+    if current:
+        paragraphs.append({
+            "paragraph": len(paragraphs) + 1,
+            "speaker": None,
+            "text": " ".join(current),
+        })
+
+    return paragraphs
