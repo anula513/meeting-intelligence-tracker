@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from parser import parse_labeled
+from parser import parse_labeled, parse_unlabeled 
 
 
 # ---- Normal cases -------------------------------------------------------
@@ -95,3 +95,64 @@ def test_real_sample_has_25_turns():
     path = Path("sample_transcripts/2026-09-15_beta-launch-planning.txt")
     turns = parse_labeled(path.read_text(encoding="utf-8"))
     assert len(turns) == 25
+
+
+def test_two_paragraphs_unlabeled():
+    turns = parse_unlabeled(
+        "Thanks everyone for joining. The main goal today is to pick an analytics "
+        "vendor for the beta. We looked at Vendor A and Vendor B over the last "
+        "two weeks.\n\nNote: the budget figures below are estimates from last quarter.\n"
+    )
+    assert len(turns) == 2
+    assert turns[0]["paragraph"] == 1
+    assert turns[0]["speaker"] is None
+    assert turns[0]["text"] == "Thanks everyone for joining. The main goal today is to pick an analytics vendor for the beta. We looked at Vendor A and Vendor B over the last two weeks."
+    assert turns[1]["paragraph"] == 2
+    assert turns[1]["speaker"] is None
+    assert turns[1]["text"] == "Note: the budget figures below are estimates from last quarter."
+
+# ---- Blank-line cases ---------------------------------------------------
+
+def test_several_blank_lines_between_paragraphs():
+    text = "First thing.\n\n\n\nSecond thing."
+    turns = parse_unlabeled(text)
+    assert len(turns) == 2
+    assert turns[0]["paragraph"] == 1
+    assert turns[0]["text"] == "First thing."
+    assert turns[1]["paragraph"] == 2
+    assert turns[1]["text"] == "Second thing."
+ 
+ 
+# ---- Line-break cases ---------------------------------------------------
+ 
+def test_wrapped_paragraph_is_joined():
+    text = "This paragraph\nwraps over\nthree lines.\n\nSecond paragraph."
+    turns = parse_unlabeled(text)
+    assert len(turns) == 2
+    assert turns[0]["speaker"] is None
+    assert turns[0]["text"] == "This paragraph wraps over three lines."
+    assert turns[1]["text"] == "Second paragraph."
+ 
+ 
+# ---- Empty and whitespace cases -----------------------------------------
+ 
+def test_empty_input_gives_no_paragraphs():
+    assert parse_unlabeled("") == []
+ 
+ 
+def test_extra_spaces_are_trimmed_unlabeled():
+    # includes a "blank" line that actually contains spaces
+    text = "   First thing.   \n   \n   Second thing.   "
+    turns = parse_unlabeled(text)
+    assert len(turns) == 2
+    assert turns[0]["text"] == "First thing."
+    assert turns[1]["text"] == "Second thing."
+ 
+ 
+# ---- Real data ----------------------------------------------------------
+# Run pytest from the project root so this relative path works.
+ 
+def test_real_unlabeled_sample_has_11_paragraphs():
+    path = Path("sample_transcripts/2026-09-22_vendor-sync.txt")
+    turns = parse_unlabeled(path.read_text(encoding="utf-8"))
+    assert len(turns) == 11
