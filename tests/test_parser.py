@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from parser import parse_labeled, parse_unlabeled 
+from parser import parse_labeled, parse_unlabeled, is_labeled, parse_transcript 
 
 
 # ---- Normal cases -------------------------------------------------------
@@ -156,3 +156,80 @@ def test_real_unlabeled_sample_has_11_paragraphs():
     path = Path("sample_transcripts/2026-09-22_vendor-sync.txt")
     turns = parse_unlabeled(path.read_text(encoding="utf-8"))
     assert len(turns) == 11
+
+def test_is_labeled_true_for_labeled_text():
+    text = "[00:00:04] Priya: Hi.\n[00:00:09] Sam: Hello."
+    assert is_labeled(text) is True
+ 
+ 
+def test_is_labeled_false_for_unlabeled_text():
+    text = "First thing.\n\nSecond thing."
+    assert is_labeled(text) is False
+ 
+ 
+# ---- is_labeled: empty and edge cases -----------------------------------
+ 
+def test_is_labeled_empty_input():
+    assert is_labeled("") is False
+ 
+ 
+def test_is_labeled_wrapped_lines_still_count_as_labeled():
+    # 5 non-blank lines, only 2 start with "[" (40%), the rest are wrapped text.
+    # This is why the cutoff is 30% and not 100%.
+    text = (
+        "[00:00:04] Priya: A long sentence\n"
+        "that wraps\n"
+        "across lines.\n"
+        "[00:00:09] Sam: Okay.\n"
+        "Yes."
+    )
+    assert is_labeled(text) is True
+ 
+ 
+def test_is_labeled_one_bracket_line_in_unlabeled_text():
+    # 10 non-blank lines, 1 starts with "[" (10%), so it is still unlabeled.
+    text = "[Note: estimates]\n\n" + "\n\n".join(["Some paragraph."] * 9)
+    assert is_labeled(text) is False
+ 
+ 
+def test_is_labeled_exactly_at_threshold():
+    # 10 non-blank lines, exactly 3 start with "[" (30%): "at least 30%" counts.
+    lines = ["[00:00:01] A: x"] * 3 + ["more text"] * 7
+    assert is_labeled("\n".join(lines)) is True
+ 
+ 
+# ---- parse_transcript: picks the right parser ---------------------------
+ 
+def test_parse_transcript_uses_labeled_parser():
+    turns = parse_transcript("[00:00:04] Priya: Hi.")
+    assert len(turns) == 1
+    assert turns[0]["speaker"] == "Priya"
+    assert turns[0]["timestamp"] == "00:00:04"
+ 
+ 
+def test_parse_transcript_uses_unlabeled_parser():
+    paragraphs = parse_transcript("First thing.\n\nSecond thing.")
+    assert len(paragraphs) == 2
+    assert paragraphs[0]["paragraph"] == 1
+    assert paragraphs[0]["speaker"] is None
+ 
+ 
+def test_parse_transcript_empty_input():
+    assert parse_transcript("") == []
+ 
+ 
+# ---- Real data ----------------------------------------------------------
+# Run pytest from the project root so these relative paths work.
+ 
+def test_is_labeled_on_real_samples():
+    labeled = Path("sample_transcripts/2026-09-15_beta-launch-planning.txt")
+    unlabeled = Path("sample_transcripts/2026-09-22_vendor-sync.txt")
+    assert is_labeled(labeled.read_text(encoding="utf-8")) is True
+    assert is_labeled(unlabeled.read_text(encoding="utf-8")) is False
+ 
+ 
+def test_parse_transcript_on_real_samples():
+    labeled = Path("sample_transcripts/2026-09-15_beta-launch-planning.txt")
+    unlabeled = Path("sample_transcripts/2026-09-22_vendor-sync.txt")
+    assert len(parse_transcript(labeled.read_text(encoding="utf-8"))) == 25
+    assert len(parse_transcript(unlabeled.read_text(encoding="utf-8"))) == 11
