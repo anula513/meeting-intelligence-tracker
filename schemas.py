@@ -13,3 +13,7 @@ class ActionItem(BaseModel):
     owner: str | None = None
     due_date: str | None= None
     source_quote: str 
+
+class Extraction(BaseModel):
+    decisions: list[Decision]
+    action_items: list[ActionItem]

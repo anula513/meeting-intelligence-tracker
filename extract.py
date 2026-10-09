@@ -1,10 +1,9 @@
 from parser import parse_transcript
 from prompts import EXTRACTION_PROMPT
-from schemas import Decision, ActionItem
-from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
 from openai import OpenAI
+from schemas import Extraction
 
 
 load_dotenv()
@@ -14,11 +13,6 @@ client = OpenAI()
 
 # Read the model name from .env
 MODEL = os.getenv("OPENAI_MODEL")
-
-
-class Extraction(BaseModel):
-    decisions: list[Decision]
-    action_items: list[ActionItem]
 
 
 def extract(transcript_text):
