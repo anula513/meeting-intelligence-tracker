@@ -81,3 +81,10 @@ def parse_transcript(text):
         return parse_labeled(text)
     return parse_unlabeled(text)
 
+def meeting_info(path):
+    """Get (date, name) from a filename like 2026-09-22_vendor-sync.txt."""
+    stem = Path(path).stem
+    if "_" not in stem:
+        return None, stem  # no date in the filename
+    date, name = stem.split("_", 1)
+    return date, name

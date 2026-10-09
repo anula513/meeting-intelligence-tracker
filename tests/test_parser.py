@@ -1,6 +1,5 @@
 from pathlib import Path
-
-from parser import parse_labeled, parse_unlabeled, is_labeled, parse_transcript 
+from parser import parse_labeled, parse_unlabeled, is_labeled, parse_transcript, meeting_info 
 
 
 # ---- Normal cases -------------------------------------------------------
@@ -233,3 +232,14 @@ def test_parse_transcript_on_real_samples():
     unlabeled = Path("sample_transcripts/2026-09-22_vendor-sync.txt")
     assert len(parse_transcript(labeled.read_text(encoding="utf-8"))) == 25
     assert len(parse_transcript(unlabeled.read_text(encoding="utf-8"))) == 11
+
+def test_meeting_info_reads_date_and_name():
+    assert meeting_info("sample_transcripts/2026-09-22_vendor-sync.txt") == ("2026-09-22", "vendor-sync")
+
+
+def test_meeting_info_keeps_extra_underscores_in_the_name():
+    assert meeting_info("2026-09-22_vendor_sync.txt") == ("2026-09-22", "vendor_sync")
+
+
+def test_meeting_info_without_underscore_has_no_date():
+    assert meeting_info("notes.txt") == (None, "notes")
