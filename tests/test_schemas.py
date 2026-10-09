@@ -2,8 +2,6 @@ import pytest
 from pydantic import ValidationError
 
 from schemas import Decision, ActionItem
-
-
 # ---- Decision -----------------------------------------------------------
 
 def test_valid_decision_works():
