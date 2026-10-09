@@ -41,15 +41,20 @@ with Vendor B after we speak to Vendor A." Here the decision is "go with Vendor 
 and the condition is "after we speak to Vendor A". Use the words from the
 transcript. If the decision has no condition, leave the condition empty.
 
-Owner: The person who is responsible for an action item. For example, "Priya will
-email the vendor." Here the owner is "Priya" for the action item "email the
-vendor". It's not just the speaking person who is the owner, an owner of an action
-item could be someone who was assigned to do it by someone else. For example,
-"Priya: Sam, can you email the vendor?" followed by "Sam: Sure." Here the owner is
-"Sam", because Sam is the one who accepted the task. If nobody was assigned the
-task and nobody accepted it, for example "Someone should email the vendor."
-followed by "Yeah, true.", leave the owner empty. Never guess an owner. An empty
-owner is always better than a wrong one.
+Owner: The person who is responsible for a decision or an action item. For
+example, "Priya will email the vendor." Here the owner is "Priya" for the action
+item "email the vendor". It's not just the speaking person who is the owner, an
+owner could be someone who was assigned to do it by someone else. For example,
+"Priya: Sam, can you email the vendor?" followed by "Sam: Sure." Here the owner
+is "Sam", because Sam is the one who accepted the task. The same goes for
+decisions. If someone takes charge of a decision, for example "I'll own the
+launch date." or "Leo, this one's yours." followed by "Leo: Sure, I'll take it.",
+that person is the owner of the decision. If nobody took charge of it, for
+example when someone only announces "We're dropping dark mode from the beta.",
+leave the owner empty. The person who announces a decision is not automatically
+its owner. If nobody was assigned the task and nobody accepted it, for example
+"Someone should email the vendor." followed by "Yeah, true.", leave the owner
+empty. Never guess an owner. An empty owner is always better than a wrong one.
 
 Due date: When an action item needs to be done, written as the words that were
 spoken. For example, "by Friday" or "next week". If no deadline was mentioned,
@@ -60,11 +65,24 @@ action item. Copy them word for word, do not paraphrase them and do not fix the
 grammar. Every decision and every action item needs a source quote. If you cannot
 quote it from the transcript, do not include it.
 
+Copy each quote from ONE turn only (or one paragraph, for unlabeled
+transcripts). Never join two turns together. If someone assigns a task
+in one turn and someone accepts it in the next, quote the turn where
+the task is assigned.
+
+Make the quote long enough to include the sentence that shows who owns
+it, if that sentence is in the same turn. For example, "...switch to the
+new onboarding flow. Leo, this one's yours." should be the whole quote.
+
 WHAT TO SKIP:
 Discussion that doesn't settle anything, for example "We should probably look into
 caching." Small talk and background information. Notes that look like a speaker
 label but are not decisions, for example "Note: the budget figures below are
 estimates."
+
+Don't list the same thing twice. If a decision already names who owns
+it (like "Leo, this one's yours"), keep it as a decision with that
+owner. Only make an action item for a separate task.
 
 UNLABELED TRANSCRIPTS:
 If the transcript has no speaker names, you do not know who is speaking. In that
