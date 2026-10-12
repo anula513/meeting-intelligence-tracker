@@ -1,0 +1,42 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Make an offer to the second candidate for the data analyst role",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Agreed. We'll make her an offer."
+    },
+    {
+      "decision": "Whether to repost the job posting for the second role",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Let's wait and see. We haven't decided on that yet."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Send the second candidate the offer details",
+      "owner": "Rohan",
+      "due_date": "by Friday",
+      "source_quote": "Rohan, can you send her the offer details by Friday?"
+    },
+    {
+      "task": "Check with legal about the offer letter template",
+      "owner": null,
+      "due_date": null,
+      "source_quote": "Someone should check with legal about the template."
+    },
+    {
+      "task": "Write up the intern budget proposal and share it with Elena and Rohan",
+      "owner": "Tara",
+      "due_date": "tomorrow",
+      "source_quote": "I'll write up the intern budget proposal tomorrow and share it with you both."
+    }
+  ],
+  "must_not_extract": [
+    "I think the second candidate is the strongest."
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Go with plan two (more expensive, 3-day delivery) for the holiday season",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "So we do like this, we go with plan two. Final. We don't change this."
+    },
+    {
+      "decision": "Whether to use eco boxes or keep the old boxes for packaging",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "About the packaging, we cannot decide yet. Some people want the eco boxes and some people want to keep the old boxes. Maybe next month we decide."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Send the signed contract to the shipping company",
+      "owner": "Jordan",
+      "due_date": "after the demo",
+      "source_quote": "For the contract, Jordan agreed to send the signed contract to the shipping company after the demo."
+    }
+  ],
+  "must_not_extract": [
+    "Also, it would be good if the shipping company can give us a tracking dashboard."
+  ]
+}

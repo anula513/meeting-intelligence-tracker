@@ -1,0 +1,30 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Patch forward and fix the config instead of rolling back the release",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Good point. Actually, no rollback. We'll patch forward and fix the config instead."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Push the config fix",
+      "owner": "Jonas",
+      "due_date": "tonight",
+      "source_quote": "Yes, I'll push the config fix tonight."
+    },
+    {
+      "task": "Add a database health alert",
+      "owner": "Priya",
+      "due_date": "early next week",
+      "source_quote": "I can do that, but not this week. Probably early next week."
+    }
+  ],
+  "must_not_extract": [
+    "Let's roll back the release tonight.",
+    "We might want to look at the deploy process in general at some point."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Build search on the existing database, not a new search service",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Okay, existing database it is. We're not adding a new service this sprint."
+    },
+    {
+      "decision": "Whether to build autocomplete this sprint",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Let's leave autocomplete open and look at it again in the next planning."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Speed up the search index rebuild",
+      "owner": "Marcus",
+      "due_date": "by next Wednesday",
+      "source_quote": "Yeah, I can do that. I'll have a first pass by next Wednesday."
+    },
+    {
+      "task": "Design the search results page",
+      "owner": "Dana",
+      "due_date": "by Monday",
+      "source_quote": "I'll take the results page. I can have it done by Monday."
+    },
+    {
+      "task": "Update the API docs for the new endpoint",
+      "owner": null,
+      "due_date": "before release",
+      "source_quote": "Yes, we'll get the docs updated before release."
+    },
+    {
+      "task": "Wire up the analytics event for search",
+      "owner": "Leo",
+      "due_date": null,
+      "source_quote": "And Leo, the analytics event for search needs wiring up. That's you."
+    }
+  ],
+  "must_not_extract": [
+    "Before we pick tasks, the search index rebuild is taking forty minutes right now. Just wanted everyone to know."
+  ]
+}

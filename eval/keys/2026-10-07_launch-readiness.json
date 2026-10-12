@@ -1,0 +1,36 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Launch on Monday",
+      "status": "provisional",
+      "condition": "provided QA finishes the regression run clean",
+      "owner": null,
+      "source_quote": "Okay, Monday launch, provided QA finishes the regression run clean."
+    },
+    {
+      "decision": "Whether to do a staged rollout or release all at once",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "We'll figure that out on Friday."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Write the help articles for the support team",
+      "owner": "Dana",
+      "due_date": "by Saturday",
+      "source_quote": "I can take that. I'll write the help articles by Saturday."
+    },
+    {
+      "task": "Draft the launch announcement email to customers",
+      "owner": "Marcus",
+      "due_date": "on Sunday",
+      "source_quote": "I'll do the announcement email, I'll draft it on Sunday."
+    }
+  ],
+  "must_not_extract": [
+    "Support team still doesn't have the help articles. Someone needs to get those written."
+  ]
+}

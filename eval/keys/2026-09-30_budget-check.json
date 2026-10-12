@@ -1,0 +1,34 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Hire a contractor for the registration desk",
+      "status": "provisional",
+      "condition": "if the fourth quarter numbers come in above target",
+      "owner": null,
+      "source_quote": "We'll hire a contractor if the fourth quarter numbers come in above target. If they don't, the current team handles it."
+    },
+    {
+      "decision": "Move the conference to the larger venue across town",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "People had different views and the cost difference is still unclear. We didn't land on anything, so we'll come back to it."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Send the revised budget to finance",
+      "owner": "Maya",
+      "due_date": "by end of week",
+      "source_quote": "Maya will send the revised budget to finance by end of week."
+    },
+    {
+      "task": "Double check the hotel block contract",
+      "owner": null,
+      "due_date": "before the deadline",
+      "source_quote": "Someone should double check the hotel block contract before the deadline."
+    }
+  ],
+  "must_not_extract": []
+}

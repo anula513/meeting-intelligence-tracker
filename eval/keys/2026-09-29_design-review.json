@@ -1,0 +1,30 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Use the blue header color for the settings page",
+      "status": "provisional",
+      "condition": "unless Priya hates it when she sees it tomorrow",
+      "owner": null,
+      "source_quote": "Then let's probably go with the blue header, unless Priya hates it when she sees it tomorrow."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Flag the blue header choice to Priya in the design channel",
+      "owner": "Dana",
+      "due_date": "tonight",
+      "source_quote": "I'll flag it to her in the design channel tonight."
+    },
+    {
+      "task": "Update the mockups for the profile page",
+      "owner": "Sam",
+      "due_date": "by Thursday",
+      "source_quote": "the mockups for the profile page are outdated. I'll update the mockups by Thursday."
+    }
+  ],
+  "must_not_extract": [
+    "One thing, the save button is still pretty small. Just noting it.",
+    "We could also think about a dark theme at some point, but not now."
+  ]
+}
