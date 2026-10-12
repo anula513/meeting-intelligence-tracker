@@ -1,0 +1,12 @@
+[00:00:04] Elena: Quick hiring sync. We have three finalists for the data analyst role.
+[00:00:11] Rohan: I think the second candidate is the strongest. Her case study was really clear.
+[00:00:20] Elena: Agreed. We'll make her an offer. Rohan, can you send her the offer details by Friday?
+[00:00:29] Rohan: Yeah sure, I'll send them by Friday.
+[00:00:36] Elena: Great. The offer letter also needs to go through legal. Someone should check with legal about the template.
+[00:00:46] Tara: Mm, yeah.
+[00:00:49] Elena: Okay. Tara, you wanted to talk about the intern budget.
+[00:00:55] Tara: Right. I'll write up the intern budget proposal tomorrow and share it with you both.
+[00:01:04] Elena: Perfect. What about the job posting for the second role? Should we repost it?
+[00:01:11] Rohan: I'm not sure. We got very few applicants.
+[00:01:17] Tara: Let's wait and see. We haven't decided on that yet.
+[00:01:23] Elena: Okay, leaving that one open. Thanks everyone.

@@ -1,0 +1,8 @@
+[00:00:03] Leo: Morning everyone. I'll go first. Yesterday I worked on the onboarding screens, they're mostly done.
+[00:00:12] Dana: I'm still on the search results page. Should be wrapping up soon.
+[00:00:19] Marcus: I looked at the index rebuild. It's slow, I'm still investigating.
+[00:00:27] Priya: Sounds good. Anyone blocked?
+[00:00:31] Leo: Not blocked, but the staging server was slow yesterday.
+[00:00:38] Marcus: Yeah, I noticed that too.
+[00:00:42] Dana: It would be nice to have a better coffee machine in the office honestly.
+[00:00:49] Priya: Ha, agreed. Okay, that's it. Have a good day.

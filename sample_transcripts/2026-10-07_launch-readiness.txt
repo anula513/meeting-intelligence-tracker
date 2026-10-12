@@ -1,0 +1,15 @@
+[00:00:03] Priya: Okay, launch readiness check for Monday. Where are we?
+[00:00:09] Marcus: Backend looks good. The regression run is still going, it should finish
+tomorrow morning.
+[00:00:20] Priya: So are we good to go ahead with Monday? I think we're good to go ahead as long as the
+regression run comes back clean.
+[00:00:34] Dana: Fine by me. The new screens are ready.
+[00:00:40] Priya: Okay, Monday launch, provided QA finishes the regression run clean.
+[00:00:50] Leo: Support team still doesn't have the help articles. Someone needs to get those written.
+[00:00:58] Dana: I can take that. I'll write the help articles by Saturday.
+[00:01:06] Priya: Thanks Dana. Also, who announces the launch to customers?
+[00:01:13] Marcus: I'll do the announcement email, I'll draft it on Sunday.
+[00:01:21] Priya: Great. Last thing, do we do a staged rollout or all at once?
+[00:01:29] Leo: Staged is safer, but all at once is simpler. I really can't decide.
+[00:01:38] Priya: We'll figure that out on Friday.
+[00:01:42] Priya: Okay, thanks everyone.

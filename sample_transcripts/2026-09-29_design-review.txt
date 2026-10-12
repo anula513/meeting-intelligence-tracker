@@ -1,0 +1,11 @@
+[00:00:05] Sam: Okay, quick design review for the settings page. Dana, you want to start?
+[00:00:11] Dana: Sure. I tried two header colors, the dark blue and the lighter teal. The blue looks cleaner on mobile.
+[00:00:24] Sam: I like the blue too. Leo, any objection?
+[00:00:29] Leo: No objection from me. The teal gets washed out on the older phones.
+[00:00:38] Sam: Then let's probably go with the blue header, unless Priya hates it when she sees it tomorrow.
+[00:00:47] Dana: Fair. I'll flag it to her in the design channel tonight.
+[00:00:55] Leo: One thing, the save button is still pretty small. Just noting it.
+[00:01:03] Sam: Noted. Okay, next, the mockups for the profile page are outdated. I'll update the mockups by Thursday.
+[00:01:14] Dana: Great, I'll need those before I start the icons.
+[00:01:20] Leo: We could also think about a dark theme at some point, but not now.
+[00:01:28] Sam: Agreed, not now. Anything else? No? Then that's it, thanks everyone.

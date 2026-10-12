@@ -1,0 +1,21 @@
+[00:00:03] Priya: Alright, sprint planning. We have two weeks and the main goal is getting search working in the app.
+[00:00:12] Marcus: Before we pick tasks, the search index rebuild is taking forty minutes right now. Just wanted everyone to know.
+[00:00:21] Priya: Thanks for flagging. Okay, first decision. Are we building search on the existing database or moving to a separate search service?
+[00:00:33] Leo: Separate service is cleaner long term, but it's a lot more work for two weeks.
+[00:00:42] Dana: I'd stay on the existing database.
+[00:00:50] Priya: Okay, existing database it is. We're not adding a new service this sprint.
+[00:00:58] Marcus: Works for me.
+[00:01:03] Priya: Next, the index rebuild. Marcus, can you look into speeding it up?
+[00:01:10] Marcus: Yeah, I can do that. I'll have a first pass by next Wednesday.
+[00:01:19] Priya: Great. Dana, the search results page needs a design.
+[00:01:25] Dana: I'll take the results page. I can have it done by Monday.
+[00:01:32] Leo: What about the docs? Someone has to update the API docs for the new endpoint.
+[00:01:40] Priya: Yes, we'll get the docs updated before release.
+[00:01:47] Leo: Okay.
+[00:01:51] Priya: And Leo, the analytics event for search needs wiring up. That's you.
+[00:01:58] Leo: Sure, I'll take it.
+[00:02:04] Priya: Good. One last thing, should we also build autocomplete this sprint?
+[00:02:12] Dana: I think it's too much.
+[00:02:17] Marcus: Agreed, but I don't want to lose it either.
+[00:02:23] Priya: Let's leave autocomplete open and look at it again in the next planning.
+[00:02:30] Priya: Okay, that's everything. Thanks all.

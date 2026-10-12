@@ -1,0 +1,12 @@
+[00:00:04] Anika: Okay, retro on Tuesday's outage. The checkout service was down for about twenty minutes.
+[00:00:13] Jonas: The cause was the config change we shipped at four. It pointed checkout at the wrong database.
+[00:00:24] Anika: Right. So what do we do about the release that's still live? Let's roll back the release tonight.
+[00:00:33] Jonas: Rolling back also removes the shipping fix that customers have been waiting for.
+[00:00:41] Priya: Good point. Actually, no rollback. We'll patch forward and fix the config instead.
+[00:00:50] Anika: Okay, patch forward. Jonas, can you push the config fix?
+[00:00:57] Jonas: Yes, I'll push the config fix tonight.
+[00:01:04] Anika: Second thing, we had no alert for this. Priya, can you add a database health alert?
+[00:01:12] Priya: I can do that, but not this week. Probably early next week.
+[00:01:20] Anika: Fine. Early next week then.
+[00:01:25] Jonas: We might want to look at the deploy process in general at some point.
+[00:01:32] Anika: Yeah, maybe later. Okay, that's all.

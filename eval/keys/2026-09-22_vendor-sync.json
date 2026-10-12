@@ -1,0 +1,43 @@
+{
+  "split": "dev",
+  "decisions": [
+    {
+      "decision": "Go with Vendor B as the analytics vendor",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "So we're going with Vendor B. Everyone okay with that? Good, that's decided."
+    },
+    {
+      "decision": "Sign the one-year contract with Vendor B",
+      "status": "provisional",
+      "condition": "legal approves the data retention terms",
+      "owner": null,
+      "source_quote": "We'll sign the one-year contract if legal approves the data retention terms."
+    },
+    {
+      "decision": "Whether to move the old analytics data over",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "We didn't reach a conclusion on that one, so let's leave it open for now."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Draft a short summary of the contract terms for legal",
+      "owner": "Priya",
+      "due_date": "by Wednesday",
+      "source_quote": "Priya will draft a short summary of the contract terms for legal by Wednesday."
+    },
+    {
+      "task": "Ask finance about the invoice schedule",
+      "owner": null,
+      "due_date": null,
+      "source_quote": "Someone should ask finance about the invoice schedule before we sign anything."
+    }
+  ],
+  "must_not_extract": [
+    "It would be nice to get a demo of their new alerting feature at some point."
+  ]
+}

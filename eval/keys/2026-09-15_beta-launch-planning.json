@@ -1,0 +1,57 @@
+{
+  "split": "dev",
+  "decisions": [
+    {
+      "decision": "Launch the beta on October 1st",
+      "status": "provisional",
+      "condition": "assuming security signs off",
+      "owner": "Priya",
+      "source_quote": "Let's go with October 1st, assuming security signs off. I'll own the launch date."
+    },
+    {
+      "decision": "Drop dark mode from the beta",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "We're dropping dark mode from the beta. It can come back after launch."
+    },
+    {
+      "decision": "Switch to the new onboarding flow instead of the old one",
+      "status": "final",
+      "condition": null,
+      "owner": "Leo",
+      "source_quote": "we also agreed to switch to the new onboarding flow instead of the old one. Leo, this one's yours."
+    },
+    {
+      "decision": "Whether the beta is free or paid",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Okay, we're not going to settle this today. Let's come back to pricing next week."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Run the pen test",
+      "owner": "Dana",
+      "due_date": "next week",
+      "source_quote": "I'll run the pen test next week so we know in time."
+    },
+    {
+      "task": "Get the staging environment stable",
+      "owner": "Marcus",
+      "due_date": "by the 25th",
+      "source_quote": "Marcus, can you get the staging environment stable by the 25th?"
+    },
+    {
+      "task": "Send the security checklist to the vendor",
+      "owner": null,
+      "due_date": "by Friday",
+      "source_quote": "Someone needs to send the security checklist to the vendor by Friday."
+    }
+  ],
+  "must_not_extract": [
+    "Before we start, staging is still a bit flaky. Just flagging it.",
+    "We should probably look into caching at some point too."
+  ]
+}
