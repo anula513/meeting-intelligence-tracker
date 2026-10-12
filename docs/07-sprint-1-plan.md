@@ -12,12 +12,14 @@
 4. Parser for unlabeled transcripts and labeled/unlabeled detection, plus tests
 5. Schemas (Decision and ActionItem) with pydantic
 6. Prompt, including the owner rule: the owner is the person who accepts or is assigned the task, never a guess
-7. API call with structured outputs (check current OpenAI docs first)
-8. Code check that every source quote appears in the transcript
-9. Command line: meeting name and date from the filename (YYYY-MM-DD_name.txt), optional override; save to output/
-10. Run on both samples and review the JSON together
-11. Labeling guide and eval set of 15 transcripts, labeled by hand
-12. Script for precision, recall, and invented-owner count; write the baseline report
+7. API call with structured outputs (check current OpenAI docs first) (done)
+8. Code check that every source quote appears in the transcript (done)
+9. Command line: meeting name and date from the filename (YYYY-MM-DD_name.txt), optional override; save to output/ (done)
+10. Run on both samples and review the JSON together (done)
+11. Labeling guide and eval set of 15 transcripts, labeled by hand (partly done: guide written, 2 dev keys labeled; 10 planned (charter says 15, to revisit))
+12. Script for precision, recall, and invented-owner count; write the baseline report (done: score.py and run_eval.py; dev practice numbers only, the baseline report waits for the test keys)
+
+**Left in Sprint 1:** hand-label the 8 test keys, run `python run_eval.py`, then `python score.py --report docs/baseline-report.md` and fill in "What failed and why".
 
 ## Working rules
 - Plan first, then one step at a time; read every change before accepting
