@@ -7,12 +7,11 @@ from parser import meeting_info
 from verify import find_bad_quotes
 
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: python run.py <path-to-transcript.txt>")
-        sys.exit(1)
+def run_one(path):
+    """Extract one transcript, check its quotes, and save output/<stem>.json.
 
-    path = sys.argv[1]
+    Calls the OpenAI API. Returns (output, out_path).
+    """
     date, name = meeting_info(path)
     transcript = Path(path).read_text(encoding="utf-8")
 
@@ -32,9 +31,20 @@ def main():
     out_path = out_dir / (Path(path).stem + ".json")
     out_path.write_text(json.dumps(output, indent=2), encoding="utf-8")
 
+    return output, out_path
+
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python run.py <path-to-transcript.txt>")
+        sys.exit(1)
+
+    output, out_path = run_one(sys.argv[1])
+    bad_quotes = output["unverified_quotes"]
+
     print(f"Saved {out_path}")
-    print(f"{len(result.decisions)} decisions, "
-          f"{len(result.action_items)} action items, "
+    print(f"{len(output['decisions'])} decisions, "
+          f"{len(output['action_items'])} action items, "
           f"{len(bad_quotes)} unverified quotes")
     for q in bad_quotes:
         print(f"  WARNING: {q}")
