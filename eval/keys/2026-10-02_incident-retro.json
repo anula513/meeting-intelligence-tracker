@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [
     {
       "decision": "Patch forward and fix the config instead of rolling back the release",

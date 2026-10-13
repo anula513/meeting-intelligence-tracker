@@ -75,10 +75,13 @@ it, if that sentence is in the same turn. For example, "...switch to the
 new onboarding flow. Leo, this one's yours." should be the whole quote.
 
 WHAT TO SKIP:
-Discussion that doesn't settle anything, for example "We should probably look into
+- Discussion that doesn't settle anything, for example "We should probably look into
 caching." Small talk and background information. Notes that look like a speaker
 label but are not decisions, for example "Note: the budget figures below are
 estimates."
+- Ideas that are put off ("not now", "maybe later", "at some point") are not decisions. Skip them.
+- If a decision is left open or unresolved, do not also list it as an action item. "We'll look at it 
+again next week" is not a task unless a specific person is asked to do something.
 
 Don't list the same thing twice. If a decision already names who owns
 it (like "Leo, this one's yours"), keep it as a decision with that

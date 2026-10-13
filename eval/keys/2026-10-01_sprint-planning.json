@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [
     {
       "decision": "Build search on the existing database, not a new search service",

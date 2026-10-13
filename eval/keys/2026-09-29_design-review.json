@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [
     {
       "decision": "Use the blue header color for the settings page",

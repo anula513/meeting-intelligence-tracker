@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [],
   "action_items": [],
   "must_not_extract": [

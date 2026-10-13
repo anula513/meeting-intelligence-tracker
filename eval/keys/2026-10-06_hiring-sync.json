@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [
     {
       "decision": "Make an offer to the second candidate for the data analyst role",

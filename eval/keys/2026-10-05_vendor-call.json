@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [
     {
       "decision": "Go with plan two (more expensive, 3-day delivery) for the holiday season",
