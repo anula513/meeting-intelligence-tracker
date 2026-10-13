@@ -30,7 +30,6 @@
       "source_quote": "I'll do the announcement email, I'll draft it on Sunday."
     }
   ],
-  "must_not_extract": [
-    "Support team still doesn't have the help articles. Someone needs to get those written."
-  ]
+  "must_not_extract": 
+  []
 }

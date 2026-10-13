@@ -1,5 +1,6 @@
 from score import (quotes_overlap, match_items, score_transcript, metrics,
-                   split_totals, check_targets, build_report, write_report)
+                   split_totals, check_targets, build_report, write_report,
+                   find_turn)
 
 # Fake data only. These tests never call the API.
 
@@ -210,3 +211,164 @@ def test_report_never_overwrites_existing_file(tmp_path):
     r = score_transcript(make_output(), make_key())
     assert write_report({"a": r}, path) is False
     assert path.read_text(encoding="utf-8") == "my notes"
+
+
+# ---- adjusted matching (adjacent turns) ----
+
+# A fake transcript, already split into turns (position 0, 1, 2, ...)
+TURNS = [
+    "Okay, let's start.",                                   # 0
+    "Marcus, can you get staging stable by the 25th?",      # 1 question
+    "Yes, I can do that.",                                  # 2 answer
+    "Next, dark mode.",                                     # 3
+    "I think we should drop dark mode.",                    # 4
+    "Agreed, dark mode is out of the beta.",                # 5
+]
+QUESTION = "Marcus, can you get staging stable by the 25th?"
+ANSWER = "Yes, I can do that."
+DROP_IDEA = "I think we should drop dark mode."
+DROP_AGREED = "Agreed, dark mode is out of the beta."
+
+
+def test_find_turn_returns_turn_position():
+    assert find_turn(ANSWER, TURNS) == 2
+
+
+def test_find_turn_is_none_for_quote_across_two_turns():
+    assert find_turn("by the 25th? Yes, I can do that.", TURNS) is None
+
+
+def test_action_item_in_adjacent_turn_with_same_owner_is_adjusted_match():
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])
+    output = make_output(actions=[action(ANSWER, owner="marcus")])
+    r = score_transcript(output, key, TURNS)
+
+    assert r["action_items"]["found"] == 0               # strict: miss
+    assert r["adjusted"]["action_items"]["found"] == 1   # adjusted: match
+    assert any(p.startswith("ADJUSTED action item") for p in r["problems"])
+    assert not any(p.startswith("MISS") for p in r["problems"])
+
+
+def test_turns_two_apart_do_not_match():
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])        # turn 1
+    output = make_output(actions=[action("Next, dark mode.", owner="Marcus")])  # turn 3
+    r = score_transcript(output, key, TURNS)
+    assert r["adjusted"]["action_items"]["found"] == 0
+
+
+def test_action_item_with_different_owner_does_not_match():
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])
+    output = make_output(actions=[action(ANSWER, owner="Priya")])
+    r = score_transcript(output, key, TURNS)
+    assert r["adjusted"]["action_items"]["found"] == 0
+
+
+def test_action_item_with_both_owners_null_does_not_match():
+    key = make_key(actions=[action(QUESTION, owner=None)])
+    output = make_output(actions=[action(ANSWER, owner=None)])
+    r = score_transcript(output, key, TURNS)
+    assert r["adjusted"]["action_items"]["found"] == 0
+
+
+def test_action_item_with_one_null_owner_never_matches():
+    key = make_key(actions=[action(QUESTION, owner=None)])
+    output = make_output(actions=[action(ANSWER, owner="Marcus")])
+    assert score_transcript(output, key, TURNS)["adjusted"]["action_items"]["found"] == 0
+
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])
+    output = make_output(actions=[action(ANSWER, owner=None)])
+    assert score_transcript(output, key, TURNS)["adjusted"]["action_items"]["found"] == 0
+
+
+def test_decision_with_both_owners_null_and_same_status_is_adjusted_match():
+    key = make_key([decision(DROP_AGREED, owner=None, status="final")])
+    output = make_output([decision(DROP_IDEA, owner=None, status="final")])
+    r = score_transcript(output, key, TURNS)
+
+    assert r["decisions"]["found"] == 0
+    assert r["adjusted"]["decisions"]["found"] == 1
+    assert r["adjusted"]["decisions"]["fully_correct"] == 1
+
+
+def test_decision_with_different_status_does_not_match():
+    key = make_key([decision(DROP_AGREED, owner=None, status="final")])
+    output = make_output([decision(DROP_IDEA, owner=None, status="provisional")])
+    r = score_transcript(output, key, TURNS)
+    assert r["adjusted"]["decisions"]["found"] == 0
+
+
+def test_decision_with_one_null_owner_never_matches():
+    # Model names an owner the key doesn't have: must not be hidden by adjusting
+    key = make_key([decision(DROP_AGREED, owner=None)])
+    output = make_output([decision(DROP_IDEA, owner="Priya")])
+    assert score_transcript(output, key, TURNS)["adjusted"]["decisions"]["found"] == 0
+
+    key = make_key([decision(DROP_AGREED, owner="Priya")])
+    output = make_output([decision(DROP_IDEA, owner=None)])
+    assert score_transcript(output, key, TURNS)["adjusted"]["decisions"]["found"] == 0
+
+
+def test_strict_pair_is_never_undone():
+    # The adjacent answer comes first in the model list, but the exact quote still wins
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])
+    output = make_output(actions=[action(ANSWER, owner="Marcus"), action(QUESTION, owner="Marcus")])
+    r = score_transcript(output, key, TURNS)
+
+    assert r["action_items"]["found"] == 1
+    assert r["adjusted"]["action_items"]["found"] == 1
+    assert any(p.startswith("EXTRA action item") and ANSWER in p for p in r["problems"])
+
+
+def test_unknown_turn_gives_warning_and_no_adjusted_pair():
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])
+    output = make_output(actions=[action("by the 25th? Yes, I can do that.", owner="Marcus")])
+    r = score_transcript(output, key, TURNS)
+
+    assert r["adjusted"]["action_items"]["found"] == 0
+    assert any("turn unknown" in w for w in r["warnings"])
+
+
+def test_no_transcript_means_no_adjusted_pairs():
+    key = make_key(actions=[action(QUESTION, owner="Marcus")])
+    output = make_output(actions=[action(ANSWER, owner="Marcus")])
+    r = score_transcript(output, key, turns=None)
+    assert r["adjusted"]["action_items"]["found"] == 0
+
+
+def test_adjusted_is_never_below_strict():
+    cases = [
+        (make_output(actions=[action(ANSWER, owner="Marcus")]),
+         make_key(actions=[action(QUESTION, owner="Marcus")])),
+        (make_output([decision(DROP_IDEA), decision(DROP_AGREED)]),
+         make_key([decision(DROP_AGREED)])),
+        (make_output([decision(DROP_IDEA, owner="Priya")]),
+         make_key([decision(DROP_AGREED, owner=None)])),
+        (make_output(), make_key([decision(DROP_AGREED)])),
+    ]
+    for output, key in cases:
+        r = score_transcript(output, key, TURNS)
+        for kind in ["decisions", "action_items"]:
+            assert r["adjusted"][kind]["found"] >= r[kind]["found"]
+            assert r["adjusted"][kind]["fully_correct"] >= r[kind]["fully_correct"]
+
+
+def test_totals_add_up_adjusted_counts():
+    r = score_transcript(make_output(actions=[action(ANSWER, owner="Marcus")]),
+                         make_key(actions=[action(QUESTION, owner="Marcus")]), TURNS)
+    total = split_totals({"a": r}, "dev")
+    assert total["action_items"]["found"] == 0
+    assert total["adjusted"]["action_items"]["found"] == 1
+
+
+def test_targets_use_strict_numbers_only():
+    # Adjusted would be 100%, strict is 0%: the target must FAIL
+    r = score_transcript(make_output([decision(DROP_IDEA)]), make_key([decision(DROP_AGREED)]), TURNS)
+    passed = check_targets(split_totals({"a": r}, "dev"))
+    assert passed["precision"] is False
+    assert passed["recall"] is False
+
+
+def test_report_shows_strict_and_adjusted_columns():
+    r = score_transcript(make_output(), make_key())
+    report = build_report({"a": r})
+    assert "| Metric | Strict | Adjusted |" in report
