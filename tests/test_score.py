@@ -372,3 +372,45 @@ def test_report_shows_strict_and_adjusted_columns():
     r = score_transcript(make_output(), make_key())
     report = build_report({"a": r})
     assert "| Metric | Strict | Adjusted |" in report
+
+
+# ---- must-not-extract hits ----
+
+TRAP = "We should probably look into caching at some point."
+
+
+def test_extra_overlapping_a_trap_is_counted():
+    r = score_transcript(make_output([decision("look into caching")]), make_key(must_not=[TRAP]))
+    assert r["trap_hits"] == 1
+
+
+def test_extra_not_overlapping_a_trap_is_not_counted():
+    r = score_transcript(make_output([decision(QUOTE_A)]), make_key(must_not=[TRAP]))
+    assert r["trap_hits"] == 0
+
+
+def test_trap_extra_that_gets_an_adjusted_pair_is_not_counted():
+    # Traps are only checked on extras left after BOTH passes
+    key = make_key(actions=[action(QUESTION, owner="Marcus")], must_not=[ANSWER])
+    output = make_output(actions=[action(ANSWER, owner="Marcus")])
+    r = score_transcript(output, key, TURNS)
+
+    assert r["adjusted"]["action_items"]["found"] == 1
+    assert r["trap_hits"] == 0
+
+
+def test_trap_hits_add_up_decisions_and_action_items():
+    key = make_key(must_not=[TRAP, QUOTE_C])
+    output = make_output([decision("look into caching")], [action(QUOTE_C)])
+    assert score_transcript(output, key)["trap_hits"] == 2
+
+
+def test_totals_add_up_trap_hits():
+    r1 = score_transcript(make_output([decision("look into caching")]), make_key(must_not=[TRAP]))
+    r2 = score_transcript(make_output([decision(TRAP)]), make_key(must_not=[TRAP]))
+    assert split_totals({"one": r1, "two": r2}, "dev")["trap_hits"] == 2
+
+
+def test_report_has_must_not_extract_row():
+    r = score_transcript(make_output([decision("look into caching")]), make_key(must_not=[TRAP]))
+    assert "| Must-not-extract hits | 1 |" in build_report({"a": r})

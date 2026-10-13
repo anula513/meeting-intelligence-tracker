@@ -229,7 +229,8 @@ def mismatch_problems(pairs, kind):
 def score_list(model_items, key_items, must_not_extract, kind, turns=None):
     """Score one kind of item. kind is "decision" or "action item".
 
-    Returns (strict_counts, adjusted_counts, problems, warnings).
+    Returns (strict_counts, adjusted_counts, trap_hits, problems, warnings).
+    trap_hits = extras left after BOTH passes whose quote overlaps a must_not_extract quote.
     """
     strict_pairs, misses, extras = match_items(model_items, key_items)
     new_pairs, misses, extras, warnings = adjusted_match(misses, extras, turns, kind)
@@ -247,11 +248,16 @@ def score_list(model_items, key_items, must_not_extract, kind, turns=None):
     # Misses and extras that are left even after the adjusted pass
     for key_item in misses:
         problems.append(f"MISS {kind}: {key_item['source_quote']}")
+
+    trap_hits = 0
     for model_item in extras:
-        flag = " [MUST-NOT-EXTRACT]" if is_in_must_not(model_item, must_not_extract) else ""
+        flag = ""
+        if is_in_must_not(model_item, must_not_extract):
+            trap_hits += 1
+            flag = " [MUST-NOT-EXTRACT]"
         problems.append(f"EXTRA {kind}{flag}: {model_item['source_quote']}")
 
-    return strict, adjusted, problems, warnings
+    return strict, adjusted, trap_hits, problems, warnings
 
 
 def score_transcript(output, key, turns=None):
@@ -260,9 +266,9 @@ def score_transcript(output, key, turns=None):
     turns is the list of turn texts. Without it, no adjusted pairs are made.
     """
     must_not = key.get("must_not_extract", [])
-    dec_strict, dec_adjusted, dec_problems, dec_warnings = score_list(
+    dec_strict, dec_adjusted, dec_traps, dec_problems, dec_warnings = score_list(
         output.get("decisions", []), key.get("decisions", []), must_not, "decision", turns)
-    act_strict, act_adjusted, act_problems, act_warnings = score_list(
+    act_strict, act_adjusted, act_traps, act_problems, act_warnings = score_list(
         output.get("action_items", []), key.get("action_items", []), must_not, "action item", turns)
 
     return {
@@ -271,6 +277,7 @@ def score_transcript(output, key, turns=None):
         "action_items": act_strict,
         "adjusted": {"decisions": dec_adjusted, "action_items": act_adjusted},
         "unverified": len(output.get("unverified_quotes", [])),
+        "trap_hits": dec_traps + act_traps,
         "problems": dec_problems + act_problems,
         "warnings": dec_warnings + act_warnings,
     }
@@ -316,6 +323,7 @@ def split_totals(results, split):
         "action_items": {},
         "adjusted": {"decisions": {}, "action_items": {}},
         "unverified": 0,
+        "trap_hits": 0,
     }
     for r in results.values():
         if r["split"] != split:
@@ -326,6 +334,7 @@ def split_totals(results, split):
         add_counts(total["adjusted"]["decisions"], r["adjusted"]["decisions"])
         add_counts(total["adjusted"]["action_items"], r["adjusted"]["action_items"])
         total["unverified"] += r["unverified"]
+        total["trap_hits"] += r["trap_hits"]
     return total
 
 
@@ -403,7 +412,7 @@ def comparison_rows(strict, adjusted):
     return rows
 
 
-def print_block(title, strict, adjusted, unverified):
+def print_block(title, strict, adjusted, unverified, trap_hits):
     """Print strict and adjusted numbers side by side."""
     print(title)
     print(f"  {'':38} {'strict':>8} {'adjusted':>9}")
@@ -414,6 +423,7 @@ def print_block(title, strict, adjusted, unverified):
               f"{adjusted[kind_key]['found']} adjusted, of {strict[kind_key]['key']} in key "
               f"({strict[kind_key]['model']} returned)")
     print(f"  invented owners {invented_owners(strict)} | unverified quotes {unverified}")
+    print(f"  must-not-extract hits {trap_hits} (leftover extras, no target)")
 
 
 def print_targets(total):
@@ -438,7 +448,7 @@ def print_targets(total):
 def print_results(results):
     print("=== Per transcript ===")
     for stem, r in results.items():
-        print_block(f"{stem} ({r['split']})", r, r["adjusted"], r["unverified"])
+        print_block(f"{stem} ({r['split']})", r, r["adjusted"], r["unverified"], r["trap_hits"])
 
     for split in SPLITS:
         total = split_totals(results, split)
@@ -448,7 +458,7 @@ def print_results(results):
             print("  no transcripts scored yet")
             continue
         print_block(f"{total['transcripts']} transcripts (micro-averaged)",
-                    total, total["adjusted"], total["unverified"])
+                    total, total["adjusted"], total["unverified"], total["trap_hits"])
         print("Targets (strict only):")
         print_targets(total)
 
@@ -504,6 +514,7 @@ def report_section(label, total):
         f"| Invented owners | {invented_owners(total)} | | = {TARGET_INVENTED_OWNERS} "
         f"| {word(passed['invented_owners'])} |",
         f"| Unverified quotes | {total['unverified']} | | | |",
+        f"| Must-not-extract hits | {total['trap_hits']} | | - | - |",
         "",
     ]
     return lines
