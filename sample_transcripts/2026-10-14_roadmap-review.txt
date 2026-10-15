@@ -1,0 +1,14 @@
+[00:00:04] Nina: Okay, Q4 roadmap review. Biggest item is the mobile app beta.
+[00:00:13] Omar: Engineering thinks we can ship the beta in November if nothing slips.
+[00:00:24] Nina: The one thing that could slip it is the security review. When does that wrap up?
+[00:00:33] Omar: They said end of this month, but they haven't confirmed.
+[00:00:41] Nina: Okay. Let's plan the beta for November, as long as the security review finishes by the end of this month. If it doesn't, we push to December.
+[00:00:54] Priya: That works for marketing.
+[00:01:00] Omar: The security team still needs the latest architecture diagram. Someone should send it over.
+[00:01:09] Nina: Yeah, that would help.
+[00:01:13] Priya: I'll draft the beta announcement and share it by Wednesday.
+[00:01:21] Nina: Great, thanks Priya.
+[00:01:26] Omar: Long term, it would be nice to add offline mode, but that's a 2027 conversation.
+[00:01:35] Nina: Agreed, definitely not this quarter.
+[00:01:41] Priya: Oh, and the beta needs a name at some point.
+[00:01:47] Nina: True. Okay, that's everything for today.

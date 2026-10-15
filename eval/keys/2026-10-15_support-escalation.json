@@ -1,0 +1,36 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Move the overnight queue to the contractor team starting next month",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "So, we are moving the overnight queue to the contractor team, starting next month. That is settled, no more discussion on that."
+    },
+    {
+      "decision": "Whether to offer phone support",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "About phone support, some people think we need it and some people think it costs too much. We did not decide anything. We will look again after the customer survey comes back."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Update the escalation guide",
+      "owner": "Tomás",
+      "due_date": "before the end of the week",
+      "source_quote": "Tomás will update the escalation guide before the end of the week."
+    },
+    {
+      "task": "Read the new refund policy",
+      "owner": null,
+      "due_date": "before Monday",
+      "source_quote": "Everyone should read the new refund policy before Monday."
+    }
+  ],
+  "must_not_extract": [
+    "Also it would be great to have a live chat button on the help page someday."
+  ]
+}

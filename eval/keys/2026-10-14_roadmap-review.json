@@ -1,0 +1,30 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Plan the mobile app beta for November, pushing to December if the security review slips",
+      "status": "provisional",
+      "condition": "as long as the security review finishes by the end of this month",
+      "owner": null,
+      "source_quote": "Okay. Let's plan the beta for November, as long as the security review finishes by the end of this month. If it doesn't, we push to December."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Draft the beta announcement and share it",
+      "owner": "Priya",
+      "due_date": "by Wednesday",
+      "source_quote": "I'll draft the beta announcement and share it by Wednesday."
+    },
+    {
+      "task": "Send the security team the latest architecture diagram",
+      "owner": null,
+      "due_date": null,
+      "source_quote": "The security team still needs the latest architecture diagram. Someone should send it over."
+    }
+  ],
+  "must_not_extract": [
+    "Long term, it would be nice to add offline mode, but that's a 2027 conversation.",
+    "Oh, and the beta needs a name at some point."
+  ]
+}

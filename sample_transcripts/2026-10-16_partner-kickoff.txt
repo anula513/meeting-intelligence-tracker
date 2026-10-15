@@ -1,0 +1,13 @@
+[00:00:05] Lena: Welcome everyone. This is the kickoff for the Orbit integration.
+[00:00:13] Raj: First technical question, REST or GraphQL for the API?
+[00:00:20] Chloe: Orbit's team only supports REST on their side.
+[00:00:27] Raj: Then it's REST. I'll own the integration.
+[00:00:35] Lena: Perfect. Chloe, can you set up a weekly call with Orbit?
+[00:00:42] Chloe: Sure, I'll send the invites tomorrow.
+[00:00:49] Lena: Next, pricing. Do we charge Orbit usage-based or a flat monthly fee?
+[00:00:58] Raj: Usage-based is fairer, but flat is easier to explain.
+[00:01:05] Chloe: I don't think we can settle that today. Finance needs to weigh in.
+[00:01:13] Lena: Right, we'll leave pricing open for now.
+[00:01:19] Raj: It would be great to do a joint blog post at launch.
+[00:01:26] Lena: Love that idea, but let's not commit to anything yet.
+[00:01:33] Lena: Okay, thanks everyone, talk next week.

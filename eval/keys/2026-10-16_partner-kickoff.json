@@ -1,0 +1,30 @@
+{
+  "split": "test",
+  "decisions": [
+    {
+      "decision": "Use REST for the Orbit integration API",
+      "status": "final",
+      "condition": null,
+      "owner": "Raj",
+      "source_quote": "Then it's REST. I'll own the integration."
+    },
+    {
+      "decision": "Whether to charge Orbit usage-based or a flat monthly fee",
+      "status": "unresolved",
+      "condition": null,
+      "owner": null,
+      "source_quote": "Right, we'll leave pricing open for now."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Send the invites for a weekly call with Orbit",
+      "owner": "Chloe",
+      "due_date": "tomorrow",
+      "source_quote": "Sure, I'll send the invites tomorrow."
+    }
+  ],
+  "must_not_extract": [
+    "It would be great to do a joint blog post at launch."
+  ]
+}

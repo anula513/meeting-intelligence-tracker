@@ -1,0 +1,10 @@
+{
+  "split": "test",
+  "decisions": [],
+  "action_items": [],
+  "must_not_extract": [
+    "We could do something outdoors, like a hike.",
+    "I wonder if we could get the budget for a two-night stay.",
+    "Let's keep thinking about it."
+  ]
+}
