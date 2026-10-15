@@ -55,6 +55,8 @@ leave the owner empty. The person who announces a decision is not automatically
 its owner. If nobody was assigned the task and nobody accepted it, for example
 "Someone should email the vendor." followed by "Yeah, true.", leave the owner
 empty. Never guess an owner. An empty owner is always better than a wrong one.
+Group words such as everyone, we, someone, or the team are not a person. 
+Use null for owner.
 
 Due date: When an action item needs to be done, written as the words that were
 spoken. For example, "by Friday" or "next week". If no deadline was mentioned,
