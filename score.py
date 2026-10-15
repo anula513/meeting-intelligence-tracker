@@ -31,8 +31,8 @@ TARGET_PRECISION = 0.80
 TARGET_RECALL = 0.70
 TARGET_INVENTED_OWNERS = 0
 
-DEV_LABEL = "Dev practice numbers (inflated, the prompt was tuned on these two)"
-TEST_LABEL = "Test baseline"
+DEV_LABEL = "Dev set: the prompt was tuned on these meetings, so results here are not held-out"
+TEST_LABEL = "Held-out test (before fixes)"
 
 
 # ---- strict matching ----
@@ -450,6 +450,7 @@ def print_results(results):
     for stem, r in results.items():
         print_block(f"{stem} ({r['split']})", r, r["adjusted"], r["unverified"], r["trap_hits"])
 
+    # The "Held-out test" block stays held-out only until the prompt is tuned on those meetings.
     for split in SPLITS:
         total = split_totals(results, split)
         label = DEV_LABEL if split == "dev" else TEST_LABEL
