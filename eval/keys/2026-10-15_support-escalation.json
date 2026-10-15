@@ -1,5 +1,5 @@
 {
-  "split": "test",
+  "split": "dev",
   "decisions": [
     {
       "decision": "Move the overnight queue to the contractor team starting next month",

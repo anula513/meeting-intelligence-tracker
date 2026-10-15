@@ -73,5 +73,10 @@ Transcripts: 4 (micro-averaged)
 | 2026-10-19_brainstorm-session | test | 100% | 100% | 100% | 100% | 0 | 0 | 0 |
 
 ## What failed and why
+Result: FAIL. One invented owner. In support-escalation, the key says the owner of "read the new refund policy" is null (it was said to everyone), but the model wrote "Everyone" as the owner.
 
-<!-- Fill this in by hand. -->
+Why: my prompt told the model never to guess an owner but never said that group words (everyone, we, someone, the team) are not a person.
+
+Fix: I added one rule to prompts.py (commit 614da07). After it, all 14 meetings had 0 invented owners. That result is dev-only, because the prompt was tuned using these meetings. This FAIL stays in the record as the held-out result. A real fix claim needs a new set of meetings I have not tuned on.
+
+Other findings: strict action items were 60% fully correct and adjusted were 80%. The gap is the quote-turn labeling difference, not model errors. Decisions were 100% / 100% across the 4 meetings. Earlier, support-escalation gave 1 decision on one run and 2 on another with the same prompt. After the fix, 5 of 5 runs gave 2 decisions (docs/variance-support-escalation.md). Five runs cannot rule out a rare outcome.

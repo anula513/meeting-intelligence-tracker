@@ -58,6 +58,13 @@ Transcripts: 8 (micro-averaged)
 ## What failed and why
 Baseline run on 2026-10-12: one run per transcript, 8 test transcripts. All three targets passed (decision precision 85%, decision recall 92%, invented owners 0), and no unverified quotes. The problems below are what the numbers hide.
 
+Action items were the weak spot (precision 76%, recall 81%), compared with decisions (85% / 92%). A decision is a statement. An action item also needs an owner and a due date, and the model has to decide who counts as the owner. That is where it went wrong.
+
+Three things I learned:
+1. My first scorer marked valid answers wrong. The model often quoted the turn that names the owner, and my key quoted the reply. Both are real, verbatim quotes. I now report a strict score (official) and an adjusted score (neighbor-turn quotes accepted) side by side. Pass/fail uses strict.
+2. My must-not-extract traps missed the real mistakes. One trap (a line where someone says "someone needs to get those written") was unsafe, because a real action item could legitimately cite it. I removed it.
+3. The model is not deterministic. On hiring-sync, 1 of 5 runs differed. One run per meeting only shows what happened once.
+
 ### 1. Scoring problem (the metric, not the model)
 
 The scorer matches a model item to a key item when their source quotes overlap. In several cases the model found the right item but quoted a neighboring turn instead of the turn the key quoted. For example, it quoted "Jonas, can you push the config fix?" where the key quoted "Yes, I'll push the config fix tonight." The scorer counted that as one miss plus one extra item.
