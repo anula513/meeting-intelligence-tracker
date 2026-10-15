@@ -1,0 +1,35 @@
+{
+  "meeting_name": "support-escalation",
+  "meeting_date": "2026-10-15",
+  "decisions": [
+    {
+      "decision": "Move the overnight queue to the contractor team, starting next month.",
+      "status": "final",
+      "condition": null,
+      "owner": null,
+      "source_quote": "So, we are moving the overnight queue to the contractor team, starting next month. That is settled, no more discussion on that."
+    },
+    {
+      "decision": "Whether to add phone support remains undecided.",
+      "status": "unresolved",
+      "condition": "We will look again after the customer survey comes back.",
+      "owner": null,
+      "source_quote": "About phone support, some people think we need it and some people think it costs too much. We did not decide anything. We will look again after the customer survey comes back."
+    }
+  ],
+  "action_items": [
+    {
+      "task": "Update the escalation guide.",
+      "owner": "Tom\u00e1s",
+      "due_date": "before the end of the week",
+      "source_quote": "Tom\u00e1s will update the escalation guide before the end of the week. He already started on it."
+    },
+    {
+      "task": "Read the new refund policy.",
+      "owner": null,
+      "due_date": "before Monday",
+      "source_quote": "Everyone should read the new refund policy before Monday."
+    }
+  ],
+  "unverified_quotes": []
+}
