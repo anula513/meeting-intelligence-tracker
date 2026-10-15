@@ -5,6 +5,7 @@ Rules for writing answer keys. The same rules are in CLAUDE.md and the prompt.
 ## Decision
 A choice the group made, or a specific choice they tried to make and left open.
 Test: "what was chosen?" Discussion that settles nothing is not a decision.
+Reversed decision: if a decision is changed later in the meeting, label only the final decision.
 
 ## Action item
 A task someone has to do after the meeting. Test: "who is doing what?"
@@ -36,3 +37,9 @@ For each transcript, list tempting items that are not decisions or tasks
 ## How a model item matches a key item (used by the scoring script)
 An item matches when its source quote overlaps the key's quote. Owner and
 status are checked separately.
+
+## Eval discipline
+- Never tune the prompt on the test set. Once a test meeting is used to change
+  the prompt, it becomes a dev meeting, and a fresh test set is needed for any final claim.
+- Label the answer key before running the model on that meeting, and commit the
+  key before the run.
