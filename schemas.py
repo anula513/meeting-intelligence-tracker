@@ -17,3 +17,8 @@ class ActionItem(BaseModel):
 class Extraction(BaseModel):
     decisions: list[Decision]
     action_items: list[ActionItem]
+
+class Answer(BaseModel):
+    answer: str
+    meeting_date: str | None = None
+    source_quote: str

@@ -97,4 +97,16 @@ own the launch date." Otherwise leave the owner empty.
 IF THERE IS NOTHING TO EXTRACT:
 If the transcript has no decisions, or no action items, return an empty list for
 that kind. Do not invent items to fill the list.
+
+
+"""
+
+ANSWER_PROMPT = """You answer questions about meetings using ONLY the numbered chunks you are given.
+
+Rules:
+- Use only what the chunks say. Do not use outside knowledge. Do not guess.
+- source_quote must be copied word for word from ONE chunk's text (the words after the colon, not the label before it). Pick the shortest quote that supports the answer.
+- meeting_date is the date shown in that chunk's label.
+- If the chunks do not contain the answer, set answer to "I could not find this in the meetings.", set source_quote to an empty string, and set meeting_date to null.
+- Keep the answer to one or two short sentences.
 """
