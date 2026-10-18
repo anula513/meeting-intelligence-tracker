@@ -4,7 +4,7 @@
 Fathom is a strong product. I built this from scratch to learn how a trustworthy AI extraction pipeline is built and tested. Every extracted item must carry a verbatim quote from the transcript, and the code checks that the quote really appears there. Items that fail the check are flagged, not deleted. I also measured it against hand-labeled answer keys instead of just trusting a demo.
 
 ## How I used AI
-- I used Claude as a coach throughout, and Claude Code for parts of the scorer and tests.
+- I used Claude as a coach, and Claude Code for parts of the scorer and tests.
 - The 14 sample transcripts are fictional and AI-drafted. The answer keys were half drafted with AI and half drafted and reviewed by me. The model under test never saw the keys.
 - I wrote the labeling rules (decision versus action item, owner rules) and made the design decisions. I tuned the prompt only on dev meetings.
 
