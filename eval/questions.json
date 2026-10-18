@@ -1,0 +1,165 @@
+[
+  {
+    "id": "q01",
+    "question": "Which analytics vendor did the team pick?",
+    "meeting_id": "2026-09-22_vendor-sync",
+    "turns": [
+      5
+    ]
+  },
+  {
+    "id": "q02",
+    "question": "Who owns the beta launch date?",
+    "meeting_id": "2026-09-15_beta-launch-planning",
+    "turns": [
+      5
+    ]
+  },
+  {
+    "id": "q03",
+    "question": "Is dark mode going to be in the beta?",
+    "meeting_id": "2026-09-15_beta-launch-planning",
+    "turns": [
+      12,
+      13
+    ]
+  },
+  {
+    "id": "q04",
+    "question": "Who will write the help articles for the support team?",
+    "meeting_id": "2026-10-07_launch-readiness",
+    "turns": [
+      7
+    ]
+  },
+  {
+    "id": "q05",
+    "question": "What did we decide about rolling back after the outage?",
+    "meeting_id": "2026-10-02_incident-retro",
+    "turns": [
+      5
+    ]
+  },
+  {
+    "id": "q06",
+    "question": "When does Rohan need to send the offer details to the candidate?",
+    "meeting_id": "2026-10-06_hiring-sync",
+    "turns": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": "q07",
+    "question": "Which shipping plan are we going with for the holidays?",
+    "meeting_id": "2026-10-05_vendor-call",
+    "turns": [
+      3
+    ]
+  },
+  {
+    "id": "q08",
+    "question": "What color did we choose for the settings page header?",
+    "meeting_id": "2026-09-29_design-review",
+    "turns": [
+      2,
+      4,
+      5
+    ]
+  },
+  {
+    "id": "q09",
+    "question": "Who is preparing the revised budget for finance?",
+    "meeting_id": "2026-09-30_budget-check",
+    "turns": [
+      4
+    ]
+  },
+  {
+    "id": "q10",
+    "question": "Which API style will the Orbit integration use?",
+    "meeting_id": "2026-10-16_partner-kickoff",
+    "turns": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": "q11",
+    "question": "Who is arranging the weekly call with Orbit?",
+    "meeting_id": "2026-10-16_partner-kickoff",
+    "turns": [
+      5,
+      6
+    ]
+  },
+  {
+    "id": "q12",
+    "question": "Who is updating the escalation guide?",
+    "meeting_id": "2026-10-15_support-escalation",
+    "turns": [
+      4
+    ]
+  },
+  {
+    "id": "q13",
+    "question": "When will the mobile app beta ship, and what could delay it?",
+    "meeting_id": "2026-10-14_roadmap-review",
+    "turns": [
+      2,
+      5
+    ]
+  },
+  {
+    "id": "q14",
+    "question": "Who is looking into making the index rebuild faster?",
+    "meeting_id": "2026-10-01_sprint-planning",
+    "turns": [
+      8,
+      9
+    ]
+  },
+  {
+    "id": "q15",
+    "question": "Did we decide to build search as a separate service?",
+    "meeting_id": "2026-10-01_sprint-planning",
+    "turns": [
+      5,
+      6
+    ]
+  },
+  {
+    "id": "q16",
+    "question": "Why did first response times get worse this week?",
+    "meeting_id": "2026-10-15_support-escalation",
+    "turns": [
+      2
+    ]
+  },
+  {
+    "id": "q17",
+    "question": "What is the plan for the intern budget?",
+    "meeting_id": "2026-10-06_hiring-sync",
+    "turns": [
+      8
+    ]
+  },
+  {
+    "id": "q18",
+    "question": "What is the budget for the Mars mission?",
+    "meeting_id": null,
+    "turns": []
+  },
+  {
+    "id": "q19",
+    "question": "Which location did the team pick for the offsite?",
+    "meeting_id": null,
+    "turns": []
+  },
+  {
+    "id": "q20",
+    "question": "Which vendor was chosen for payroll?",
+    "meeting_id": null,
+    "turns": []
+  }
+]
