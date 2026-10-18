@@ -1,0 +1,55 @@
+[
+  {
+    "id": "h1",
+    "question": "Who is taking charge of the switch to the new onboarding flow?",
+    "meeting_id": "2026-09-15_beta-launch-planning",
+    "turns": [
+      15,
+      16
+    ]
+  },
+  {
+    "id": "h2",
+    "question": "Which candidate are we making an offer to?",
+    "meeting_id": "2026-10-06_hiring-sync",
+    "turns": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": "h3",
+    "question": "Who is pushing the config fix tonight?",
+    "meeting_id": "2026-10-02_incident-retro",
+    "turns": [
+      6,
+      7
+    ]
+  },
+  {
+    "id": "h4",
+    "question": "Is the launch happening on Monday?",
+    "meeting_id": "2026-10-07_launch-readiness",
+    "turns": [
+      3,
+      5
+    ]
+  },
+  {
+    "id": "h5",
+    "question": "What did we decide about pricing for the Orbit integration?",
+    "meeting_id": "2026-10-16_partner-kickoff",
+    "turns": [
+      9,
+      10
+    ]
+  },
+  {
+    "id": "h6",
+    "question": "What is Sam updating before Thursday?",
+    "meeting_id": "2026-09-29_design-review",
+    "turns": [
+      8
+    ]
+  }
+]

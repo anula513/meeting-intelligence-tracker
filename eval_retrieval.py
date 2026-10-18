@@ -3,10 +3,10 @@ from pathlib import Path
 
 from answer import ask, retrieve
 
-# The 20 questions we wrote down BEFORE running anything.
-# Each answerable question has: meeting_id and turns (the chunks that hold the answer).
-# The no-answer questions have turns = [] and should come back as "not_found".
-QUESTIONS = json.loads(Path("eval/questions.json").read_text(encoding="utf-8"))
+import sys
+
+QUESTION_FILE = sys.argv[1] if len(sys.argv) > 1 else "eval/questions.json"
+QUESTIONS = json.loads(Path(QUESTION_FILE).read_text(encoding="utf-8"))
 
 
 def find_rank(q, matches):
