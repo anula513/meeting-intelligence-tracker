@@ -12,22 +12,31 @@ pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
 index = pc.Index("meeting-tracker")
 
 
+def build_embed_text(chunks, i):
+    """The text we turn into a fingerprint: speaker + this turn."""
+    chunk = chunks[i]
+    speaker = chunk["speaker"] or "Unknown"
+    return f"{speaker}: {chunk['text']}".strip()
+
+
 def store_meeting(path):
     date, name = meeting_info(path)
     text = Path(path).read_text(encoding="utf-8")
     chunks = chunk_by_turn(text, Path(path).stem)
 
     records = []
-    for chunk in chunks:
+    for i, chunk in enumerate(chunks):
         record = {
             "id": f"{chunk['meeting_id']}-{chunk['turn_number']}",
-            "values": embed(chunk["text"]),
+            # the fingerprint uses the longer text (with context)...
+            "values": embed(build_embed_text(chunks, i)),
             "metadata": {
                 "meeting_id": chunk["meeting_id"],
                 "meeting_name": name,
                 "meeting_date": date or "Unknown",
                 "turn_number": chunk["turn_number"],
                 "speaker": chunk["speaker"] or "Unknown",
+                # ...but the stored text stays the ORIGINAL turn, so quotes still verify
                 "text": chunk["text"],
             },
         }
