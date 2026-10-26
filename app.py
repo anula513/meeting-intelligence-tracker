@@ -1,7 +1,13 @@
+from pathlib import Path
+
 import streamlit as st
 from answer import ask
 
 st.title("Meeting Intelligence Tracker")
+
+meeting_ids = sorted(p.stem for p in Path("sample_transcripts").glob("*.txt"))
+choice = st.selectbox("Search in", ["All meetings"] + meeting_ids)
+meeting_id = None if choice == "All meetings" else choice
 
 question = st.text_input("Ask a question about your meetings")
 
@@ -10,7 +16,7 @@ if st.button("Ask"):
         st.warning("Type a question first.")
     else:
         with st.spinner("Searching your meetings..."):
-            result = ask(question)
+            result = ask(question, meeting_id)
 
         status = result["status"]
         quote = result["source_quote"]
