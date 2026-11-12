@@ -4,3 +4,5 @@ python-dotenv>=1.0
 pytest>=8.0
 pinecone>=10.0
 streamlit
+fastapi
+uvicorn[standard]
