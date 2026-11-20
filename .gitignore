@@ -219,7 +219,6 @@ __marimo__/
 
 # Meeting Intelligence Tracker: extracted JSON from transcripts
 output/
-keys
 
 CLAUDE.md
 .claude/

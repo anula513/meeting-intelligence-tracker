@@ -6,3 +6,4 @@ pinecone>=10.0
 streamlit
 fastapi
 uvicorn[standard]
+httpx
